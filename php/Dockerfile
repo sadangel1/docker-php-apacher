@@ -1,0 +1,18 @@
+FROM php:8.2-fpm
+
+# Cài đặt các extension PHP cần thiết
+
+RUN mkdir -p /var/log && \
+    touch /var/log/php_errors.log && \
+    chmod -R 777 /var/log
+
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN apt-get update && apt-get install -y iputils-ping
+
+RUN mkdir -p /var/log/apache2 && \
+    chown -R www-data:www-data /var/log/apache2
+
+COPY php/php.ini /usr/local/etc/php/
+
+# Expose port 9000 cho PHP-FPM
+EXPOSE 9000

@@ -1,0 +1,56 @@
+version: '1.0'
+
+services:
+  apache:
+    build: 
+      context: .
+      dockerfile: ./apache/Dockerfile
+    container_name: apache_service
+    volumes:
+      - ./src:/var/www/html
+    restart: always
+    depends_on:
+      - php
+    ports:
+      - "8010:80"
+    networks:
+      - webnet
+  php:
+    build: 
+      context: .
+      dockerfile: ./php/Dockerfile
+    container_name: php-fpm
+    volumes:
+      - ./src:/var/www/html
+    expose:
+      - "9000"
+    networks:
+      - webnet
+    restart: always
+  db:
+    build: 
+      context: .
+      dockerfile: ./mysql/Dockerfile
+    container_name: mysql-db
+    environment:
+         MYSQL_DATABASE: demo1
+         MYSQL_ROOT_USER: root
+         MYSQL_ROOT_PASSWORD: 123456
+         MYSQL_ROOT_HOST: = '%'
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/my.cnf 
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount tệp init.sql
+    ports:
+      - "3310:3306"
+    depends_on:
+      - php
+      - apache
+    networks:
+      - webnet
+
+volumes:
+  mysql-data:
+networks:
+  webnet:
+    driver: bridge

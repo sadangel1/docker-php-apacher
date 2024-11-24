@@ -1,0 +1,50 @@
+version: '1.0'
+
+services:
+  apache:
+    build: 
+      context: .
+      dockerfile: ./apache/Dockerfile
+    container_name: apache_service
+    volumes:
+      - ./src:/var/www/html
+    restart: always
+    depends_on:
+      - php
+    ports:
+      - "8010:80"
+    networks:
+      - webnet
+  php:
+    build: 
+      context: .
+      dockerfile: ./php/Dockerfile
+    container_name: php-fpm
+    volumes:
+      - ./src:/var/www/html
+    expose:
+      - "9000"
+    networks:
+      - webnet
+    restart: always
+  db:
+    image: mysql:latest
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456  
+      MYSQL_DATABASE: demo          
+      MYSQL_USER: root           
+      MYSQL_PASSWORD: 123
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/my.cnf 
+    ports:
+      - "3306:3306"
+    networks:
+      - webnet
+
+volumes:
+  mysql-data:
+networks:
+  webnet:
+    driver: bridge

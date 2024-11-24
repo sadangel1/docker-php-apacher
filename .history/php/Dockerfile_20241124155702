@@ -1,0 +1,7 @@
+FROM php:8.2-fpm:latest
+
+# Cài đặt các extension PHP cần thiết
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+# Expose port 9000 cho PHP-FPM
+EXPOSE 9000

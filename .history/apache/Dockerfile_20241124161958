@@ -1,0 +1,11 @@
+FROM httpd:2.4
+
+RUN sed -i '/mod_unixd.so/s/^#//g' /usr/local/apache2/conf/httpd.conf
+RUN mkdir -p /var/log/apache2 && chown -R www-data:www-data /var/log/apache2
+COPY apache/default.conf /usr/local/apache2/conf/httpd.conf
+
+COPY src/ /usr/local/apache2/htdocs/
+
+EXPOSE 80
+
+CMD ["httpd-foreground"]

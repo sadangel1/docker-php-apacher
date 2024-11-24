@@ -1,0 +1,14 @@
+[mysqld]
+max_connections = 1000
+innodb_buffer_pool_size = 256M
+innodb_log_file_size = 64M
+
+
+sql_mode        = STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+secure-file-priv = NULL  # Cho phép tải lên các tệp từ bên ngoài (có thể cần cho việc nhập liệu).
+skip-host-cache  # Tắt bộ nhớ đệm của host khi MySQL không cần phải phân giải tên máy chủ.
+
+
+general_log     = 1
+general_log_file = /var/log/mysql/mysql.log
+slow_query_log  = 1

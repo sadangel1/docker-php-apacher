@@ -1,0 +1,44 @@
+/usr/sbin/mysqld, Version: 8.0.40 (MySQL Community Server - GPL). started with:
+Tcp port: 3306  Unix socket: /var/run/mysqld/mysqld.sock
+Time                 Id Command    Argument
+2024-11-24T12:14:37.345487Z	    0 Execute	CREATE TABLE performance_schema.innodb_redo_log_files(
+`FILE_ID` BIGINT NOT NULL COMMENT 'Id of the file.',
+`FILE_NAME` VARCHAR(2000) NOT NULL COMMENT 'Path to the file.',
+`START_LSN` BIGINT NOT NULL COMMENT 'LSN of the first block in the file.',
+`END_LSN` BIGINT NOT NULL COMMENT 'LSN after the last block in the file.',
+`SIZE_IN_BYTES` BIGINT NOT NULL COMMENT 'Size of the file (in bytes).',
+`IS_FULL` TINYINT NOT NULL COMMENT '1 iff file has no free space inside.',
+`CONSUMER_LEVEL` INT NOT NULL COMMENT 'All redo log consumers registered on smaller levels than this value, have already consumed this file.'
+)engine = 'performance_schema'
+2024-11-24T12:15:15.138397Z	    8 Connect	root@172.22.0.2 on demo1 using TCP/IP
+2024-11-24T12:15:15.141381Z	    8 Quit	
+/usr/sbin/mysqld, Version: 8.0.40 (MySQL Community Server - GPL). started with:
+Tcp port: 3306  Unix socket: /var/run/mysqld/mysqld.sock
+Time                 Id Command    Argument
+2024-11-24T12:16:26.529577Z	    0 Execute	CREATE TABLE performance_schema.innodb_redo_log_files(
+`FILE_ID` BIGINT NOT NULL COMMENT 'Id of the file.',
+`FILE_NAME` VARCHAR(2000) NOT NULL COMMENT 'Path to the file.',
+`START_LSN` BIGINT NOT NULL COMMENT 'LSN of the first block in the file.',
+`END_LSN` BIGINT NOT NULL COMMENT 'LSN after the last block in the file.',
+`SIZE_IN_BYTES` BIGINT NOT NULL COMMENT 'Size of the file (in bytes).',
+`IS_FULL` TINYINT NOT NULL COMMENT '1 iff file has no free space inside.',
+`CONSUMER_LEVEL` INT NOT NULL COMMENT 'All redo log consumers registered on smaller levels than this value, have already consumed this file.'
+)engine = 'performance_schema'
+2024-11-24T12:16:41.739465Z	    8 Connect	root@172.22.0.2 on demo1 using TCP/IP
+2024-11-24T12:16:41.742801Z	    8 Quit	
+2024-11-24T12:20:18.613786Z	    9 Connect	root@172.22.0.2 on demo1 using TCP/IP
+2024-11-24T12:20:18.615484Z	    9 Quit	
+/usr/sbin/mysqld, Version: 8.0.40 (MySQL Community Server - GPL). started with:
+Tcp port: 3306  Unix socket: /var/run/mysqld/mysqld.sock
+Time                 Id Command    Argument
+2024-11-24T12:20:59.968004Z	    0 Execute	CREATE TABLE performance_schema.innodb_redo_log_files(
+`FILE_ID` BIGINT NOT NULL COMMENT 'Id of the file.',
+`FILE_NAME` VARCHAR(2000) NOT NULL COMMENT 'Path to the file.',
+`START_LSN` BIGINT NOT NULL COMMENT 'LSN of the first block in the file.',
+`END_LSN` BIGINT NOT NULL COMMENT 'LSN after the last block in the file.',
+`SIZE_IN_BYTES` BIGINT NOT NULL COMMENT 'Size of the file (in bytes).',
+`IS_FULL` TINYINT NOT NULL COMMENT '1 iff file has no free space inside.',
+`CONSUMER_LEVEL` INT NOT NULL COMMENT 'All redo log consumers registered on smaller levels than this value, have already consumed this file.'
+)engine = 'performance_schema'
+2024-11-24T12:21:28.628556Z	    8 Connect	root@172.22.0.2 on demo1 using TCP/IP
+2024-11-24T12:21:28.631818Z	    8 Quit	

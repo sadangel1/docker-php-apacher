@@ -1,0 +1,31 @@
+version: '1.0'
+
+services:
+  apache:
+    build: 
+      context: .
+    dockerfile: apache/Dockerfile
+    container_name: apache_service
+    volumes:
+      - ./src: /usr/local/apache2/htdocs
+    restart: always
+    depends_on:
+      - php
+    ports: 8100:80
+    networks:
+      - webnet
+  php:
+    build: 
+      context: .
+      dockerfile: php/Dockerfile
+    volumes:
+      - ./src: /var/www/html
+    expose:
+      - 9000
+    networks:
+      - webnet
+    restart: always
+
+networks:
+  webnet:
+    driver: bridge
